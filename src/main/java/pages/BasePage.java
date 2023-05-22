@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 public class BasePage {
 
     protected WebDriver driver;
-    private String baseUrl = "Linkul de la siteul pe care o sa va faceti proiectul final";
+    private String baseUrl = "https://demoqa.com/books";
     public BasePage() {
     // Default constructor
     }
@@ -18,8 +18,7 @@ public class BasePage {
     }
     @BeforeClass
     public void setUp() {
-        System.setProperty("web-driver.chrome.driver",
-                "locatia catre chromedriver.exe");
+        System.setProperty("web-driver.chrome.driver", "D:\\Melinda\\Selenium\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(baseUrl);
     }

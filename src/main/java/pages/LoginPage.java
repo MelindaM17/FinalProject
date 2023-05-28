@@ -12,6 +12,7 @@ public class LoginPage extends BasePage {
     By UserName = By.id("userName");
     By Password = By.id("password");
     By LoginButton = By.id("login");
+    By NewUser = By.id("newUser");
 
     //Methods to click on Login page
     public void enterUserName(String arg1) {
@@ -19,5 +20,7 @@ public class LoginPage extends BasePage {
     public void enterPassword(String arg1) {
         driver.findElement(Password).sendKeys(arg1);}
     public void clickOnLoginButton(){ driver.findElement(LoginButton).click();}
+
+    public void clickOnNewUserButton(){ driver.findElement(NewUser).click();}
 
 }

@@ -22,11 +22,11 @@ public class BasePage {
         driver = new ChromeDriver();
         driver.get(baseUrl);
     }
-    @AfterMethod
-    //folosim @AfterMethod daca vrem sa inchidem browserul dupa fiecare test case in parte
-    public void tearDown() {
-        driver.quit();
-    }
+//    @AfterMethod
+//    //folosim @AfterMethod daca vrem sa inchidem browserul dupa fiecare test case in parte
+//    public void tearDown() {
+//        driver.quit();
+//    }
 }
-//
+
 

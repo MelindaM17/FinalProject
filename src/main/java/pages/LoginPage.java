@@ -20,7 +20,6 @@ public class LoginPage extends BasePage {
     public void enterPassword(String arg1) {
         driver.findElement(Password).sendKeys(arg1);}
     public void clickOnLoginButton(){ driver.findElement(LoginButton).click();}
-
     public void clickOnNewUserButton(){ driver.findElement(NewUser).click();}
 
 }

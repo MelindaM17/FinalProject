@@ -111,4 +111,116 @@ public class TextBoxTestCases extends BasePage {
         textBoxPage.clickOnSubmitButton();
         Assert.assertTrue(driver.getPageSource().contains("!@#$"));
     }
+    @Test
+    public void submitNonValidEmail() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterEmail("test");
+        textBoxPage.clickOnSubmitButton();
+        WebElement emailField = driver.findElement(By.id("userEmail"));
+        Assert.assertEquals(emailField.getAttribute("class"), "mr-sm-2 field-error form-control");
+    }
+
+    @Test
+    public void submitValidEmailOnlyLetters() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterEmail("Test@test.com");
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(driver.getPageSource().contains("Test@test.com"));
+    }
+    @Test
+    public void submitValidEmailLettersAndNumbers() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterEmail("Test12@test.com");
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(driver.getPageSource().contains("Test12@test.com"));
+    }
+
+    @Test
+    public void submitValidEmailLettersNumbersAndSpecialCharacters() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterEmail("example.Email_@test.com");
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(driver.getPageSource().contains("example.Email_@test.com"));
+    }
+    @Test
+    public void submitCurrentAddressOnlyLetters() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterCurrentAddress("test address");
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(driver.getPageSource().contains("test address"));
+    }
+
+    @Test
+    public void submitCurrentAddressLettersAndNumbers() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterCurrentAddress("test address 123");
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(driver.getPageSource().contains("test address 123"));
+    }
+
+    @Test
+    public void submitPermanentAddressOnlyLetters() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterPermanentAddress("test address");
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(driver.getPageSource().contains("test address"));
+    }
+
+    @Test
+    public void submitPermanentAddressLettersAndNumbers() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterPermanentAddress("test address 123");
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(driver.getPageSource().contains("test address 123"));
+    }
+
+    @Test
+    public void submitCompleteValidForm() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement textBoxMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-0\"]")));
+        textBoxMenu.click();
+        textBoxPage.enterFullName("John Smith");
+        textBoxPage.enterEmail("test@test.com");
+        textBoxPage.enterCurrentAddress("test address 12");
+        textBoxPage.enterPermanentAddress("test address 123");
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(driver.getPageSource().contains("John Smith"));
+        Assert.assertTrue(driver.getPageSource().contains("test@test.com"));
+        Assert.assertTrue(driver.getPageSource().contains("test address 12"));
+        Assert.assertTrue(driver.getPageSource().contains("test address 123"));
+    }
 }

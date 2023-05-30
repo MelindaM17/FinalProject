@@ -66,8 +66,25 @@ public class RadioButtonTestCases extends BasePage {
         boolean isNoButtonDisabled = false;
         if (!noButton.isSelected()) {
             isNoButtonDisabled = true;
-            }
-        Assert.assertTrue(isNoButtonDisabled);
         }
+        Assert.assertTrue(isNoButtonDisabled);
     }
+
+    @Test
+    public void selectYesThenImpressiveButton() {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebElement radioButtonMenu = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"item-2\"]/span")));
+        radioButtonMenu.click();
+        radioButtonPage.clickOnYesButton();
+        radioButtonPage.clickOnImpressiveButton();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("text-success")));
+
+        String actualMessage = messageElement.getText();
+        String expectedMessage = "Impressive";
+        assertEquals(expectedMessage, actualMessage);
+    }
+}
 

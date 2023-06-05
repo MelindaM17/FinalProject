@@ -2,10 +2,15 @@ package testCases;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.BasePage;
 import pages.BookStorePage;
+
+import java.time.Duration;
 
 public class BookStorePageTestCases extends BasePage {
     private BookStorePage bookStorePage;
@@ -18,6 +23,8 @@ public class BookStorePageTestCases extends BasePage {
     @Test
     public void clickOnFirstBook() throws InterruptedException {
         driver.manage().window().maximize();
+        WebElement firstBook = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.id("see-book-Git Pocket Guide")));
         bookStorePage.clickOnBook1();
         Assert.assertTrue(driver.getPageSource().contains("This pocket guide is the perfect on-the-job companion to Git"));
     }

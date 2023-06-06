@@ -17,4 +17,5 @@ Pachetul **testCases** contine test case-urile aferente elementelor din clasele 
 
 Proiectul contine atat scenarii pozitive, prin care am rulat teste folosind date si input-uri valide, cat si scenarii negative, unde am folosit date si input-uri invalide si am verificat prezente unor mesaje de eroare.
 
-TestNG va executa test case-urile pe rand si va genera un raport cu rezultatele testelor.
+TestNG va executa test case-urile pe rand si va genera un raport cu rezultatele testelor:
+![Picture1](https://github.com/MelindaM17/FinalProject/assets/132599174/2c4861ac-578d-4722-a9a5-2a1d04d11242)

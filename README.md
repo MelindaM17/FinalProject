@@ -1,21 +1,20 @@
-## Documentatie proiect final FastTrackIT
-Cursanta: Melinda Magyar
+## FastTrackIT final project documentation
 
-Scopul acestui proiect este sa automatizeze testarea site-ului web https://demoqa.com/books  folosind limbajul de programare Java și diverse instrumente de testare.
+The purpose of this project is to automate the testing of the website https://demoqa.com/books using various testing tools.
 
-Framework-ul folosit este Selenium WebDriver, iar testele sunt rulate cu TestNG.
+The framework used is Selenium WebDriver, and the tests are run with TestNG.
 
-Fisierul **pom.xml** contine toate dependintele Maven care sunt necesare pentru rularea testelor: Selenium, Chrome Driver, TestNG, FireFox Driver.
+The **pom.xml** file contains all the Maven dependencies that are necessary for running the tests: Selenium, Chrome Driver, TestNG, FireFox Driver.
 
-Proiectul a fost creat folosind design pattern-ul **Page Object Model**, astfel este format din 2 pachete: pages si testCases.
+The project was created using the **Page Object Model** design pattern, so it consists of 2 packages: pages and testCases.
 
-Pachetul **pages** contine locatorii din paginile BookStorePage, LoginPage, RadioButtonPage si TextBoxPage. Contine de asemenea si clasa BasePage care este clasa de baza pentru celelalte clase. Aici am stabilit adresa URL pentru site-ul web testat si configurari comune pentru fiecare clasa:
-- prin metoda **@BeforeClass** se deschide o instanta de Google Chrome dupa care se va redirectiona catre site-ul web testat;
-- prin metoda **@AfterMethod** se inchide instanta de Chome dupa rularea fiecarui test.
+The **pages** package contains the locators from the pages BookStorePage, LoginPage, RadioButtonPage and TextBoxPage. It also contains the BasePage class which is the parent class for the other classes. Here I set the URL for the tested website and common settings for each class:
+- through the **@BeforeClass** method, an instance of Google Chrome is opened, after which it will be redirected to the tested website;
+- through the **@AfterMethod** method, the instance of Chrome is closed after running each test.
 
-Pachetul **testCases** contine test case-urile aferente elementelor din clasele mentionate in pachetul pages.
+The **testCases** package contains the test cases related to the elements of the classes mentioned in the pages package.
 
-Proiectul contine atat scenarii pozitive, prin care am rulat teste folosind date si input-uri valide, cat si scenarii negative, unde am folosit date si input-uri invalide si am verificat prezente unor mesaje de eroare.
+The project contains both positive scenarios, through which I ran tests using valid data and inputs, as well as negative scenarios, where I used invalid data and inputs and verified the presence of error messages.
 
-TestNG va executa test case-urile pe rand si va genera un raport cu rezultatele testelor:
+TestNG will execute the test cases and finally generates a report with the test results:
 ![Picture1](https://github.com/MelindaM17/FinalProject/assets/132599174/2c4861ac-578d-4722-a9a5-2a1d04d11242)
